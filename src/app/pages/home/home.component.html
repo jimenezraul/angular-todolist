@@ -6,7 +6,7 @@
 
 <app-container>
     <div class="flex justify-between pb-5">
-        <h2 class="text-2xl">
+        <h2 class="text-2xl font-semibold text-gray-600">
             My Todos
         </h2>
         <button (click)="onModalOpenOrClose()" class="bg-blue-400 rounded-lg hover:bg-blue-600 text-white py-2 px-4">
@@ -15,14 +15,10 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="w-full">
-            <app-todos [todoList]="todoList" (selectedTodo)="onSelected($event)" />
+            <app-todos />
         </div>
         <div class="w-full">
-            @if (selectedTodo) {
-            <app-todo-detail [todoDetail]="selectedTodo" />
-            } @else {
-            <p>Select a Todo</p>
-            }
+            <app-todo-detail />
         </div>
     </div>
 </app-container>

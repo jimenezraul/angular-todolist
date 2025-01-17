@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Todos } from './todo.model';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
+import { TodoService } from './todo.service';
 
 @Component({
   selector: 'app-todos',
@@ -8,10 +8,16 @@ import { Todos } from './todo.model';
   styleUrl: './todos.component.css'
 })
 export class TodosComponent {
-  @Output() selectedTodo = new EventEmitter<string>();
-  @Input({ required: true }) todoList: Todos[] = []
+  private todoService = inject(TodoService);
 
   onSelectedTodo(id: string) {
-    this.selectedTodo.emit(id)
+    const todo = this.todoService.getTodos().find((t) => t.id === id);
+    if (todo) {
+      this.todoService.setSelectedTodo(todo);
+    }
+  }
+
+  allTodos() {
+    return this.todoService.getTodos();
   }
 }
