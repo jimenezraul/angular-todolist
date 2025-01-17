@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Todos } from '../todos/todo.model';
 
 @Component({
   selector: 'app-todo-detail',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './todo-detail.component.css'
 })
 export class TodoDetailComponent {
-
+  @Input({ required: true }) todoDetail!: Todos
 }

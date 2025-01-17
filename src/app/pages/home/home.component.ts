@@ -16,6 +16,5 @@ export class HomeComponent {
 
   onSelected(id: string) {
     this.selectedTodo = this.todoList.find((todo) => todo.id === id)
-    console.log(this.selectedTodo);
   }
 }
