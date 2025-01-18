@@ -12,6 +12,7 @@ export class ModalComponent {
   @Output() modalClosed = new EventEmitter<void>()
   constructor(private todoService: TodoService) { }
   enteredTitle = ""
+  error = ""
 
   onClosed() {
     this.modalClosed.emit()
@@ -21,7 +22,10 @@ export class ModalComponent {
     if (this.enteredTitle.trim() !== "") {
       this.todoService.addTodo(this.enteredTitle);
       this.enteredTitle = "";
-      this.modalClosed.emit(); 
+      this.error = ""
+      this.modalClosed.emit();
+    } else {
+      this.error = "Please enter a todo.";
     }
-  }  
+  }
 }
