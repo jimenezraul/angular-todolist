@@ -9,13 +9,13 @@ import { TodoService } from '../todos/todo.service';
   styleUrl: './todo-detail.component.css'
 })
 export class TodoDetailComponent {
-  private todoService = inject(TodoService);
+  constructor(private todoService: TodoService) {}
 
   get todoDetail() {
     return this.todoService.getSelectedTodo();
   }
 
-  onDelete(id: string) {
+  removeTodo(id: string) {
     this.todoService.removeTodo(id)
   }
 }

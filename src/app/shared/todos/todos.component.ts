@@ -8,7 +8,7 @@ import { TodoService } from './todo.service';
   styleUrl: './todos.component.css'
 })
 export class TodosComponent {
-  private todoService = inject(TodoService);
+  constructor(private todoService: TodoService) { }
 
   onSelectedTodo(id: string) {
     const todo = this.todoService.getTodos().find((t) => t.id === id);
