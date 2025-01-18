@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { TodoService } from '../todos/todo.service';
 
 @Component({
   selector: 'app-modal',
-  imports: [FormsModule],
+  standalone: false,
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css',
 })

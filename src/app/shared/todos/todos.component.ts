@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { TodoService } from './todo.service';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-todos',
-  imports: [DatePipe],
+  standalone: false,
   templateUrl: './todos.component.html',
   styleUrl: './todos.component.css'
 })
