@@ -27,14 +27,24 @@ export class TodoService {
     }
 
     // Add a new todo
-    addTodo(todo: Todo): void {
-        this.todos.push(todo);
+    addTodo(todo: string): void {
+        const id = this.generateId()
+        const now = Date.now.toString()
+
+        const newTodos = {
+            id: id,
+            todo: todo,
+            date: now
+        }
+        this.todos.push(newTodos);
+        this.saveTodo()
     }
 
     // Remove a todo by id
     removeTodo(id: string): void {
         this.todos = this.todos.filter((todo) => todo.id !== id)
         this.selectedTodo = null
+        this.saveTodo()
     }
 
     // Find a todo by value
@@ -54,5 +64,19 @@ export class TodoService {
 
     getSelectedTodo() {
         return this.selectedTodo;
+    }
+
+    private saveTodo = (): void => {
+        localStorage.setItem("todos", JSON.stringify(this.todos))
+    }
+
+    private generateId = (): string => {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let id = '';
+        for (let i = 0; i < 4; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            id += characters[randomIndex];
+        }
+        return id;
     }
 }
