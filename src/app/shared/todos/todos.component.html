@@ -20,11 +20,11 @@
                 <td class="px-6 py-4">
                     {{ todo.id }}
                 </td>
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-700 whitespace-nowrap">
                     {{ todo.todo }}
                 </th>
                 <td class="px-6 py-4">
-                    {{ todo.date }}
+                    {{ todo.date | date: 'mediumDate' }}
                 </td>
             </tr>
             }

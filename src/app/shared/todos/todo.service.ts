@@ -6,20 +6,15 @@ import { Todo } from './todo.model';
 })
 export class TodoService {
     private selectedTodo: Todo | null = null;
-    private todos: Todo[] = [
-        {
-            id: '1',
-            todo: "Groceries",
-            date: 'Jan 19 2025',
-        },
-        {
-            id: '2',
-            todo: "Gas",
-            date: 'Jan 20 2025',
-        }
-    ];
+    private todos: Todo[] = [];
 
-    constructor() { }
+    constructor() {
+        const todos = localStorage.getItem('todos')
+
+        if (todos) {
+            this.todos = JSON.parse(todos)
+        }
+    }
 
     // Get all todos
     getTodos(): Todo[] {
@@ -29,7 +24,7 @@ export class TodoService {
     // Add a new todo
     addTodo(todo: string): void {
         const id = this.generateId()
-        const now = Date.now.toString()
+        const now = new Date().getTime().toString()
 
         const newTodos = {
             id: id,
